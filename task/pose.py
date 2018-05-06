@@ -13,16 +13,16 @@ __config__ = {
     'data_provider': 'data.coco_pose.dp',
     'network': 'models.posenet.PoseNet',
     'inference': {
-        'nstack': 4,
+        'nstack': 2,
         'inp_dim': 256,
         'oup_dim': 68,
         'num_parts': 17,
-        'increase': 128,
+        'increase': 32,
         'keys': ['imgs']
     },
 
     'train': {
-        'batchsize': 32,
+        'batchsize': 4,
         'input_res': 512,
         'output_res': 128,
         'train_iters': 1000,
