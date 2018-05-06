@@ -2,7 +2,20 @@ import torch
 from torch import nn
 from models.layers import Conv, Hourglass, Pool
 from extensions.AE.AE_loss import AEloss
-from task.loss import HeatmapLoss
+
+class HeatmapLoss(torch.nn.Module):
+    """
+    loss for detection heatmap
+    mask is used to mask off the crowds in coco dataset
+    """
+    def __init__(self):
+        super(HeatmapLoss, self).__init__()
+
+    def forward(self, pred, gt, masks):
+        assert pred.size() == gt.size()
+        l = ((pred - gt)**2) * masks[:, None, :, :].expand_as(pred)
+        l = l.mean(dim=3).mean(dim=2).mean(dim=1)
+        return l
 
 class Merge(nn.Module):
     def __init__(self, x_dim, y_dim):

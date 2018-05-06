@@ -74,7 +74,7 @@ def setup_val_split(opt = None):
     for i in range(num_examples):
         if num_objects(i, None) > 0:
             tmp_idxs += [i]
-    ref_idxs = np.array(tmp_idxs,dtype=int)
+    ref_idxs = np.array(tmp_idxs,dtype=int)  #39935 images that # of ppl > 0
     ### choose image_id from valid_id_set
 
     valid = {}
