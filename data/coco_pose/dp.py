@@ -170,4 +170,4 @@ def init(config):
             }
 
 
-    return lambda key: gen(key)
+    return gen #lambda key: gen(key)
