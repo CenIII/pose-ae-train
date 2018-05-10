@@ -25,29 +25,29 @@ def init():
     img_ids = coco.getImgIds()
     num_examples = len(img_ids)
 
-num_parts = 17
-part_mask = np.array([0,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1])
-part_ref = {'ankle':[15,16],'knee':[13,14],'hip':[11,12],
-            'wrist':[9,10],'elbow':[7,8],'shoulder':[5,6],
-            'face':[0,1,2],'ears':[3,4]}
-part_labels = ['nose','eye_l','eye_r','ear_l','ear_r',
-               'sho_l','sho_r','elb_l','elb_r','wri_l','wri_r',
-               'hip_l','hip_r','kne_l','kne_r','ank_l','ank_r']
-basic_order = ['sho_l','sho_r', 'nose', 'eye_l','eye_r','ear_l',
-               'ear_r','elb_l','elb_r','wri_l','wri_r',
-               'hip_l','hip_r','kne_l','kne_r','ank_l','ank_r']
-pairRef = [
-    [1,2],[2,3],[1,3],
-    [6,8],[8,10],[12,14],[14,16],
-    [7,9],[9,11],[13,15],[15,17],
-    [6,7],[12,13],[6,12],[7,13]
-]
-pairRef = np.array(pairRef) - 1
+# num_parts = 17
+# part_mask = np.array([0,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1])
+# part_ref = {'ankle':[15,16],'knee':[13,14],'hip':[11,12],
+#             'wrist':[9,10],'elbow':[7,8],'shoulder':[5,6],
+#             'face':[0,1,2],'ears':[3,4]}
+# part_labels = ['nose','eye_l','eye_r','ear_l','ear_r',
+#                'sho_l','sho_r','elb_l','elb_r','wri_l','wri_r',
+#                'hip_l','hip_r','kne_l','kne_r','ank_l','ank_r']
+# basic_order = ['sho_l','sho_r', 'nose', 'eye_l','eye_r','ear_l',
+#                'ear_r','elb_l','elb_r','wri_l','wri_r',
+#                'hip_l','hip_r','kne_l','kne_r','ank_l','ank_r']
+# pairRef = [
+#     [1,2],[2,3],[1,3],
+#     [6,8],[8,10],[12,14],[14,16],
+#     [7,9],[9,11],[13,15],[15,17],
+#     [6,7],[12,13],[6,12],[7,13]
+# ]
+# pairRef = np.array(pairRef) - 1
 
 flipRef = [i-1 for i in [1,3,2,5,4,7,6,9,8,11,10,13,12,15,14,17,16] ]
 
-part_idx = {b:a for a, b in enumerate(part_labels)}
-basic_order = [part_idx[i] for i in basic_order]
+# part_idx = {b:a for a, b in enumerate(part_labels)}
+# basic_order = [part_idx[i] for i in basic_order]
 
 
 def initialize(opt):

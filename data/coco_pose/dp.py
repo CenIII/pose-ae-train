@@ -73,6 +73,9 @@ class Dataset(torch.utils.data.Dataset):
         return self.loadImage(self.index[idx % len(self.index)])
 
     def loadImage(self, idx):
+        # load: image               provide:-- test: return image
+        #       anns                        -- val: return image, anns
+        #       keypoints, masks            -- process to heatmaps and keypoints maps -- train: return image, masks, heatmaps and keypoints
         ds = self.ds
 
         inp = ds.load_image(idx)
@@ -81,7 +84,7 @@ class Dataset(torch.utils.data.Dataset):
         ann = ds.get_anns(idx)
         keypoints = ds.get_keypoints(idx, ann)
 
-        keypoints2 = [i for i in keypoints if np.sum(i[:, 2]>0)>1]
+        # keypoints2 = [i for i in keypoints if np.sum(i[:, 2]>0)>1]
 
         height, width = inp.shape[0:2]
         center = np.array((width/2, height/2))

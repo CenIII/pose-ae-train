@@ -88,12 +88,12 @@ def multiperson(img, func, mode):
 
         def array2dict(tmp):
             return {
-                'det': tmp[0][:,:,:17],
+                'det': tmp[0][:,:,:17], #???????????
                 'tag': tmp[0][:,-1, 17:34]
             }
 
         tmp1 = array2dict(func([inp]))
-        tmp2 = array2dict(func([inp[:,::-1]]))
+        tmp2 = array2dict(func([inp[:,::-1]])) #??????????
 
         tmp = {}
         for ii in tmp1:
@@ -104,11 +104,11 @@ def multiperson(img, func, mode):
             continue
         if dets is None:
             dets = det
-            mat = np.linalg.pinv(np.array(mat_).tolist() + [[0,0,1]])[:2]
+            mat = np.linalg.pinv(np.array(mat_).tolist() + [[0,0,1]])[:2]  #?????
         else:
-            dets = dets + resize(det, dets.shape[1:3]) 
+            dets = dets + resize(det, dets.shape[1:3]) #????????
 
-        if abs(i-1)<0.5:
+        if abs(i-1)<0.5:  #????????? if scale_mode is within [0.5, 1.5] then add tags layer?
             res = dets.shape[1:3]
             tags += [resize(tmp['tag'][0], res), resize(tmp['tag'][1,:, :, ::-1][flipRef], res)]
 
