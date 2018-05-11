@@ -15,7 +15,7 @@ __config__ = {
     'inference': {
         'nstack': 2,
         'inp_dim': 256,
-        'oup_dim': 68,
+        'oup_dim': 32,
         'num_parts': 17,
         'increase': 32,
         'keys': ['imgs']
@@ -25,7 +25,7 @@ __config__ = {
         'batchsize': 4,
         'input_res': 512,
         'output_res': 128,
-        'train_iters': 1000,
+        'train_iters': 500,
         'valid_iters': 10,
         'learning_rate': 2e-4,
         'num_loss': 4,
