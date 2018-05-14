@@ -13,11 +13,11 @@ __config__ = {
     'data_provider': 'data.coco_pose.dp',
     'network': 'models.posenet.PoseNet',
     'inference': {
-        'nstack': 2,
+        'nstack': 4,
         'inp_dim': 256,
-        'oup_dim': 32,
+        'oup_dim': 68,
         'num_parts': 17,
-        'increase': 32,
+        'increase': 128,
         'keys': ['imgs']
     },
 
